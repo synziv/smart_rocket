@@ -18,7 +18,9 @@ export default class Rocket {
     if (dna === undefined) this.dna = new DNA();
     else this.dna = dna;
     this.color = "white";
-    if (newColor !== undefined) this.color = newColor
+    if (newColor !== undefined) this.color = newColor;
+
+
     this.pos = p5Glob.createVector(p5Glob.width / 2, p5Glob.height); //positionne dans le milieu
     this.vel = p5Glob.createVector();
     this.acc = p5Glob.createVector();
@@ -35,14 +37,12 @@ export default class Rocket {
 
   update() {
     let d = p5Glob.dist(this.pos.x, this.pos.y, target.x, target.y);
-    //si la fusee touche la cible
-    if (d < 10) {
+
+    if (d < 20) {
       this.completed = true;
       this.pos = target.copy();
       GlobalVar.successful++;
       GlobalVar.livingRockets--;
-      //matingPool.push(this);
-
     }
 
     this.collisionDetection();
@@ -70,17 +70,12 @@ export default class Rocket {
 
   calcFitness() {
     this.fitness = GlobalVar.maxDist - p5Glob.dist(this.pos.x, this.pos.y, target.x, target.y);
-    console.log(GlobalVar.maxDist);
-    //si la fusee touche la cible
+
     if (this.completed) {
-      this.fitness = Math.pow(this.fitness, 2);
-      //bonifier si plus rapide
-      this.fitness *= Math.pow(GlobalVar.lifespan / this.lifeSpan, 10);
+      this.fitness *= Math.pow(GlobalVar.lifespan / this.lifeSpan, 2);
     }
-    if (this.crashed) {
-      //si crash vite, on minise plus
-      this.fitness /= GlobalVar.lifespan / this.lifeSpan;
-      //si crash on minimse la fitness
+    else if (this.crashed) {
+      this.fitness += (GlobalVar.lifespan-this.lifeSpan) / GlobalVar.lifespan;
       Math.sqrt(this.fitness);
     }
   }

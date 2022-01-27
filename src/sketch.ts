@@ -15,21 +15,22 @@ export class GlobalVar{
   public static count: number =0;
   public static maxDist: number =0;
   public static maxForce: number =0.2;
-  public static lifespan: number =250;//nb of frames to live
+  public static lifespan: number =150;//nb of frames to live
+  public static maxLifespan: number =350;//nb of frames to live
   public static displayAllPopulation: boolean =true;
 
-  public static obstacles: IObstacle[] =[{
-    x: 100,
+  public static obstacles: IObstacle[] = [{
+    x: 200,
     y: 150,
     w: 300,
     h: 10
-   },
-  // {
-  //   x: 0,
-  //   y: 250,
-  //   w: 300,
-  //   h: 10
-  // }
+  },
+  {
+    x: 0,
+    y: 325,
+    w: 250,
+    h: 10
+  }
   ];
 }
 export let target: p5.Vector;
@@ -40,11 +41,12 @@ let genP: p5.Element;
 let population: Population;
 
 export function setup(p5: p5) {
-  p5.createCanvas(400, 400);
-  GlobalVar.maxDist = p5.dist(400, 400, p5.width/2, 20);
+  p5.createCanvas(500, 500);
+
+  GlobalVar.maxDist = p5.dist(p5.width, p5.height, p5.width/2, 20);
   population = new Population();
   genP = createCustomP(
-    {x: 300, y: 0},
+    {x: 400, y: 0},
     [
       ['font-size', '16px'],
       ['color', 'white']
@@ -58,15 +60,20 @@ export function setup(p5: p5) {
 export function draw(p5: p5) {
   p5.background(20); //couleur
   population.run();
-  p5.ellipse(target.x, target.y, 16, 16);
+  p5.ellipse(target.x, target.y, 25, 25);
   drawObstacles();
   genP.html("Generation: "+ gen);
-  if(GlobalVar.count == GlobalVar.lifespan || GlobalVar.livingRockets == 0){
+    
+  if(GlobalVar.count >= GlobalVar.lifespan || GlobalVar.livingRockets == 0){
     GlobalVar.count =0;
     GlobalVar.successful = 0;
     population.evaluate();
     population.selection();
     gen++;
+    if(gen%40 == 0 && GlobalVar.lifespan <= GlobalVar.maxLifespan){
+      GlobalVar.lifespan +=50;
+      population.addGenes();
+    }
   }
   GlobalVar.count++;
 }
@@ -79,7 +86,6 @@ function drawObstacles(){
   //obstacle
   const {obstacles} = GlobalVar;
   for(let i =0; i<obstacles.length; i++){
-    //console.log(obstacle);
     p5Glob.rect(obstacles[i].x, obstacles[i].y, obstacles[i].w, obstacles[i].h);
   }
 }

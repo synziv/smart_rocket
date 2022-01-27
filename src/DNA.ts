@@ -1,6 +1,5 @@
 import * as p5 from "p5";
 import { getRandomInt } from "./population";
-import Rocket from "./rocket";
 import { GlobalVar } from "./sketch";
 
 export default class DNA{
@@ -9,15 +8,21 @@ export default class DNA{
     constructor(genes?: p5.Vector[]){
       if(genes === undefined){
         this.genes = [];
-        for(let i= 0; i< GlobalVar.lifespan; i++){
-          this.genes[i] = p5.Vector.random2D();
-          this.genes[i].setMag(GlobalVar.maxForce);
-        }
+        this.addGenes();
       }
       else
         this.genes = genes;
     }
-  
+
+
+    addGenes(){
+      for(let i= this.genes.length; i< GlobalVar.lifespan; i++){
+        this.genes[i] = p5.Vector.random2D();
+        this.genes[i].setMag(GlobalVar.maxForce);
+      }
+    }
+
+
     crossover = (partnerDna: DNA)=>{
       let newGenes = [];
       let mid = Math.floor(getRandomInt(this.genes.length)); // essayer avec different midpoint, genre le milieu exact
@@ -28,19 +33,29 @@ export default class DNA{
         else
           newGenes[i] = partnerDna.genes[i];
       }
-  
       return new DNA(newGenes);
     }
 
 
     mutation = () => {
       for(let i =0; i< this.genes.length; i++){
-        if(Math.random()< 0.01){
-          if(Math.random()< 0.5)
+        if(Math.random()< 0.01 ){
+          const mutationChoice = Math.random();
+          if(mutationChoice< 0.33)
             this.genes[i] = p5.Vector.random2D();
+          else if(mutationChoice< 0.66){
+            //this.genes[i] = p5Glob.createVector(0,0);
+            if(i != 0 && i !=this.genes.length-1){
+              const v1 = this.genes[i-1].copy();
+              const v2 = this.genes[i+1].copy();
+              const v = v1.add(v2).mult(0.5);
+              this.genes[i] = v;
+              
+            }
+            
+          }
           else
-            if(i!=0)
-              this.genes[i] = this.genes[i-1];
+            this.genes[i].mult(10);
           this.genes[i].setMag(GlobalVar.maxForce);
         }
       }
