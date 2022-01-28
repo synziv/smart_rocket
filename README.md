@@ -4,6 +4,12 @@ This is my take on the Smart Rockets project. It implements a basic genetic algo
 Check the [coding train video](https://www.youtube.com/watch?v=bGz7mv2vD6g) for the original content.
 
 [Try it!](https://smart-rockets-8ea8a.firebaseapp.com/) :smile:
+
+## Informations
+
+Each rocket starts with a random color. You can use the color to see the best specie taking over the population.
+
+You can see the best individual of the last generation by using the "show the fittest" button.
 ##
 
 ## Installation
