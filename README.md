@@ -1,7 +1,7 @@
 # :rocket: Smart Rockets :rocket:
 
 This is my take on the Smart Rockets project. It implements a basic genetic algorithm.
-Check the [coding train video](https://www.youtube.com/watch?v=bGz7mv2vD6g] for the original content.
+Check the [coding train video](https://www.youtube.com/watch?v=bGz7mv2vD6g) for the original content.
 
 [Try it!](https://smart-rockets-8ea8a.firebaseapp.com/) :smile:
 ##
