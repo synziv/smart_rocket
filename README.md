@@ -1,9 +1,9 @@
 # Smart Rockets
 
 This is my take on the Smart Rockets project. It implements a basic genetic algorithm.
-Check the [https://www.youtube.com/watch?v=bGz7mv2vD6g](coding train video) for the original content.
+Check the [coding train video](https://www.youtube.com/watch?v=bGz7mv2vD6g} for the original content.
 
-[https://smart-rockets-8ea8a.firebaseapp.com/](Try it!) :)
+[Try it!](https://smart-rockets-8ea8a.firebaseapp.com/) :)
 ##
 
 ## Installation
