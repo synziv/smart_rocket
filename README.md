@@ -15,6 +15,7 @@ Each rocket starts with a random color. You can use the color to see the best sp
 You can see the best individual of the last generation by using the "show the fittest" button.
 
 To optimize paths, the population starts iwth a pretty short lifespan(150 frames) and each 20 generations, it is incremented by 100 to max at 650.
+
 :point_right: So wait at least 40 generations to see something interesting
 ##
 
