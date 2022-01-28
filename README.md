@@ -1,12 +1,16 @@
-# P5.js Typescript Boilerplate
+# Smart Rockets
 
-P5.js boilerplate with Typescript support and Webpack enabled.
+This is my take on the Smart Rockets project. It implements a basic genetic algorithm.
+Check the [https://www.youtube.com/watch?v=bGz7mv2vD6g](coding train video) for the original content.
+
+[https://smart-rockets-8ea8a.firebaseapp.com/](Try it!) :)
+##
 
 ## Installation
 
 Clone the repository
 
-`git clone --depth=1 git@github.com:nathan-kansu/p5-typescript-boilerplate.git <YOUR_PROJECT_NAME>`
+`git clone git@github.com:synziv/smart-rocket.git <YOUR_PROJECT_NAME>`
 
 ## Setup
 
