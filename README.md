@@ -4,10 +4,7 @@ This is my take on the Smart Rockets project. It implements a basic genetic algo
 Check the [coding train video](https://www.youtube.com/watch?v=bGz7mv2vD6g) for the original content.
 
 
-
-https://user-images.githubusercontent.com/33548174/151604915-54d7e27a-4f02-4efe-a8a3-bcf335f35141.mp4
-
-
+![smart-rocket](https://user-images.githubusercontent.com/33548174/151605082-d43bd81c-c31d-461f-8810-95268a9dd5ae.gif)
 
 [Try it!](https://smart-rockets-8ea8a.firebaseapp.com/) :smile:
 
